@@ -44,13 +44,13 @@ def createNew():
 	return readAll()
 
 
-# @app.route('/pessoa/<int:id>', methods=['GET'])
-# def readById(id):
-	# for pessoa in pessoas:
-
-	# 	if pessoa.get('id') == id:
-	# 		return jsonify(pessoa)
-
+@app.route('/pessoa/<int:id>', methods=['GET'])
+def readById(id):
+	try:
+		personQuery	= Pessoa.query.filter_by(_id=id).first()
+		return (jsonify(personQuery.json()))
+	except:
+		return(jsonify([]))
 
 # @app.route('/pessoa/<int:id>', methods=['PUT'])
 # def updateById(id):
@@ -61,13 +61,16 @@ def createNew():
 # 			return jsonify(pessoas[i])
 		
 
-# @app.route('/pessoa/<int:id>', methods=['DELETE'])
-# def deleteById(id):
-# 	for i, pessoa in enumerate(pessoas):
-# 		if pessoa.get('id') == id:
-# 			del pessoas[i]
+@app.route('/pessoa/<int:id>', methods=['DELETE'])
+def deleteById(id):
+	try:
+		personQuery	= Pessoa.query.filter_by(_id=id).first()
+		db.session.delete(personQuery)
+		db.session.commit()
+	except:
+		return readAll()
 
-# 	return jsonify(pessoas)
+	return readAll()
 
 
 @app.route('/pessoas', methods=['GET'])
