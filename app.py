@@ -28,6 +28,7 @@ class Pessoa(db.Model):
 with app.app_context():
 	db.create_all()
 
+
 @app.route('/pessoa', methods=['POST'])
 def createNew():
 	requestJson	= request.get_json()
@@ -52,14 +53,20 @@ def readById(id):
 	except:
 		return(jsonify([]))
 
-# @app.route('/pessoa/<int:id>', methods=['PUT'])
-# def updateById(id):
-# 	updatedPerson = request.get_json();
-# 	for i, pessoa in enumerate(pessoas):
-# 		if pessoa.get('id') == id:
-# 			pessoas[i].update(updatedPerson)
-# 			return jsonify(pessoas[i])
-		
+
+@app.route('/pessoa/<int:id>', methods=['PUT'])
+def updateById(id):
+	personQuery	= Pessoa.query.filter_by(_id=id).first()
+	requestJson	= request.get_json()
+
+	if requestJson['name'] and requestJson['email'] and requestJson['birthDate']:
+		personQuery.name		= requestJson['name']
+		personQuery.email		= requestJson['email']
+		personQuery.birthDate	= requestJson['birthDate']
+		db.session.commit()
+
+	return (readAll())
+
 
 @app.route('/pessoa/<int:id>', methods=['DELETE'])
 def deleteById(id):
