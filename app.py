@@ -28,6 +28,22 @@ class Pessoa(db.Model):
 with app.app_context():
 	db.create_all()
 
+@app.route('/pessoa', methods=['POST'])
+def createNew():
+	requestJson	= request.get_json()
+
+	if requestJson['name'] and requestJson['email'] and requestJson['birthDate']:
+		newPerson = Pessoa(
+			requestJson['name'], 
+			requestJson['email'],
+			requestJson['birthDate'])
+
+		db.session.add(newPerson)
+		db.session.commit()
+
+	return readAll()
+
+
 # @app.route('/pessoa/<int:id>', methods=['GET'])
 # def readById(id):
 	# for pessoa in pessoas:
@@ -58,8 +74,10 @@ with app.app_context():
 def readAll():
 	personQuery	= Pessoa.query.all()
 	personJson	= []
+
 	for person in personQuery:
 		personJson.append(person.json())
+
 	return (jsonify(personJson))
 
 
