@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, url_for, redirect, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -17,21 +17,19 @@ class Pessoa(db.Model):
 		self.name		= name
 		self.email		= email
 		self.birthDate	= birthDate
+	
+	def json(self):
+		return ({
+			'name':			self.name,
+			'email':		self.email,
+			'birthDate':	self.birthDate
+		})
 
 with app.app_context():
 	db.create_all()
 
-
-# @app.route('/pessoa', methods=['POST'])
-# def createNew():
-# 	newPerson = request.get_json()
-# 	pessoas.append(newPerson)
-
-# 	return pessoas
-
-
 # @app.route('/pessoa/<int:id>', methods=['GET'])
-# def getById(id):
+# def readById(id):
 	# for pessoa in pessoas:
 
 	# 	if pessoa.get('id') == id:
@@ -56,9 +54,13 @@ with app.app_context():
 # 	return jsonify(pessoas)
 
 
-# @app.route('/pessoas', methods=['GET'])
-# def getAll():
-# 	return (jsonify(pessoas))
+@app.route('/pessoas', methods=['GET'])
+def readAll():
+	personQuery	= Pessoa.query.all()
+	personJson	= []
+	for person in personQuery:
+		personJson.append(person.json())
+	return (jsonify(personJson))
 
 
 if __name__ == "__main__":
