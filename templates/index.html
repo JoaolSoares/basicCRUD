@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SimpleCRUD</title>
+	<link rel="stylesheet" href="style.css"">
+</head>
+<body>
+
+	<form action="">
+		<h1>Simbiose-se</h1>
+		<table class="table-register">
+			<tr class="tr-name">
+				<td>Nome</td>
+				<td><input type="text" name="name" ></td>
+			</tr>
+	
+			<tr class="tr-email">
+				<td>Email</td>
+				<td><input type="email" name="email" ></td>
+			</tr>
+	
+			<tr class="tr-birth">
+				<td>Data de nascimento</td>
+				<td><input type="date" name="birthDate" ></td>
+			</tr>
+		</table><br>
+		<input class="btn-register" type="submit" value="Cadastrar" onclick="register()">
+	</form>
+
+	<div class="users">
+
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
