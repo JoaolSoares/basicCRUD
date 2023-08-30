@@ -26,10 +26,10 @@ h1 {
 }
 
 /* Register Form */
-form {
+.form-container {
 	margin:				 0;
 	margin-bottom:		10vh;
-	padding:			3%;
+	padding:			2%;
 	width:				25vw;
 	font-family:		'Trebuchet MS', Arial, sans-serif;
 	color:				rgb(255, 255, 255);
@@ -39,7 +39,14 @@ form {
 	display:			flex;
 	flex-direction:		column;
 	align-items:		center;
+	
 }
+
+form {
+	margin: 0;
+	width: 100%;
+}
+
 
 input {
 	margin:				0;
@@ -86,12 +93,12 @@ th {
 }
 
 .table-container {
-	width: 60%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin-bottom: 15vh;
+	width:				60%;
+	display:			flex;
+	flex-direction:		column;
+	align-items:		center;
+	justify-content:	center;
+	margin-bottom:		15vh;
 }
 .table-users {
 	width:				100%;
@@ -101,6 +108,7 @@ th {
 }
 
 .one-user {
+	width:				100%;
 	border-collapse:	collapse;
 	margin:				0;
 	height:				7vh;
@@ -119,12 +127,9 @@ th {
 .name-user,
 .email-user,
 .birth-user {
+	margin:				0;
 	padding-left:		10px;
-	margin:				0;
-	padding-right:		8vw;
 	justify-content:	space-between;
-	margin:				0;
-	margin-bottom:		1%;
 	font-family:		'Trebuchet MS', Arial, sans-serif;
 	color:				rgba(255, 255, 255, 0.5);
 }
@@ -135,8 +140,8 @@ th {
 }
 
 i {
-	cursor: pointer;
+	cursor:		pointer;
 }
 i:active {
-	color: rgba(255, 255, 255, 0.415);
+	color:		rgba(255, 255, 255, 0.415);
 }
