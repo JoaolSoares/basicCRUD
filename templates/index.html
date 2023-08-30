@@ -5,33 +5,30 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>SimpleCRUD</title>
 	<link rel="stylesheet" href="style.css"">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 
-	<form action="">
-		<h1>Simbiose-se</h1>
-		<table class="table-register">
-			<tr class="tr-name">
-				<td>Nome</td>
-				<td><input type="text" name="name" ></td>
-			</tr>
-	
-			<tr class="tr-email">
-				<td>Email</td>
-				<td><input type="email" name="email" ></td>
-			</tr>
-	
-			<tr class="tr-birth">
-				<td>Data de nascimento</td>
-				<td><input type="date" name="birthDate" ></td>
-			</tr>
-		</table><br>
+	<h1>Cadastre-se</h1>
+	<form action="" class="form-register">
+		<div class="register-name">
+			<label>Nome:</label>
+			<input type="text" name="name" class="input-name">
+		</div>
+
+		<div class="register-email">
+			<label>Email:</label>
+			<input type="email" name="email" class="input-email">
+		</div>
+
+		<div class="register-birth">
+			<label>Data de nascimento:</label>
+			<input type="date" name="birthDate" class="input-birthDate">
+		</div>
 		<input class="btn-register" type="submit" value="Cadastrar" onclick="register()">
 	</form>
 
-	<div class="users">
-
-	</div>
+	<div class="table-container"></div>
 
 	<script src="script.js"></script>
 </body>
